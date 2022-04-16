@@ -23,7 +23,7 @@ app.post("/encrypt", async (req, res) => {
             cipherText
         });
     } catch (err) {
-        res.status(400).send(err);
+        res.status(400).send(err.message);
     }
 });
 
@@ -35,7 +35,7 @@ app.post("/decrypt", async (req, res) => {
             plainText
         });
     } catch (err) {
-        res.status(400).send(err);
+        res.status(400).send(err.message);
     }
 });
 
