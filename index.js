@@ -1,12 +1,19 @@
 const express = require("express");
 const app = express();
 const NodeRSA = require("node-rsa");
+const cors = require("cors");
 
 const key = new NodeRSA({ b: 512 });
 
-console.log(key);
-
 app.use(express.json());
+app.use(cors());
+//allow cors forr every host
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    next();
+});
 
 app.post("/encrypt", async (req, res) => {
     try {
