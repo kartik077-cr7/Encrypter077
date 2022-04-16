@@ -15,6 +15,12 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get("/",async (req,res)=>{
+    return res.status(200).json({
+        "messaage":"Hello World"
+    })
+})
+
 app.post("/encrypt", async (req, res) => {
     try {
         // Encrypt
